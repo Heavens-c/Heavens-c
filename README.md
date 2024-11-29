@@ -1,7 +1,7 @@
 # HEAVENSCs
 
 
-👋 so hi i'm Jh**** D****** Student of OLFU started college @2014 and stop @2016 after pandemic 2023 return to college and persue my dreams to be an app/game developer or perhaps a  network cloud engineer 
+👋 so hi i'm Jh**** D****** Student of OLFU started college @2014 and stop @2018 after pandemic 2023 return to college and persue my dreams to be an app/game developer or perhaps a  network cloud engineer 
 
 🤔So here my story
 I'm now working as a part-time/full-time script developer on both the backend and the FiveM modification for a popular open world game that allows you to play on dedicated servers. This allows you to customize your multiplayer experience. With FiveM, you get an unparalleled gaming experience on your own servers, where you are not limited by in-game money. I've created a city called Billionaire City / Underworld / City Of Dreams (part of it), PH Gov City (some of it), Density (some of it), and Project Rev v1,v2. I contributed to a framework in fiveM that serves as small code but is kept as a precious value. Thank you, QBCORE, for valuing my small code. So my life begins in 2019. Until now
