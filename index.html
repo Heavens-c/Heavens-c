@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .section {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            color: #4e54c8;
+        }
+
+        #about p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .project {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+        }
+
+        .project h3 {
+            margin-top: 0;
+            color: #4e54c8;
+        }
+
+        .project a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project a:hover {
+            text-decoration: underline;
+            color: #ffcc00;
+        }
+
+        footer {
+            background: #4e54c8;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        #contact a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: #ffcc00;
+        }
+
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            background: #4e54c8;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ffcc00;
+            color: #4e54c8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to My Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hi, I'm [Your Name], a passionate script developer specializing in creating immersive experiences for the FiveM modification of a popular open-world game. My journey began in 2019, and since then, I have dedicated myself to crafting custom scripts and environments that enhance multiplayer gaming.</p>
+            <p>I have worked on developing incredible cities such as <strong>Billionaire City</strong>, <strong>Underworld</strong>, <strong>City of Dreams</strong>, <strong>PH Gov City</strong>, and <strong>Density</strong>. Each of these projects has challenged and refined my skills, from scripting intricate systems to ensuring seamless multiplayer integration.</p>
+            <p>My contributions extend to frameworks like QBCORE, where a small piece of my code has been treasured as a valuable contribution. I am driven by a passion for learning and have experience in <strong>PHP (basic)</strong>, <strong>Lua (moderate)</strong>, and database management with <strong>MySQL</strong> and <strong>MariaDB</strong>. I'm also exploring <strong>C, C++, Python</strong>, and soon, <strong>Rust</strong>.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="project">
+                <h3>Billionaire City</h3>
+                <p>A high-end city with unique scripts and immersive gameplay tailored for players who want an unparalleled luxury gaming experience.</p>
+            </div>
+            <div class="project">
+                <h3>Underworld</h3>
+                <p>A dark, thrilling city designed to explore the mysteries and dangers of a criminal underworld.</p>
+            </div>
+            <div class="project">
+                <h3>City of Dreams</h3>
+                <p>Part of a collaborative project, this city aims to create a vibrant and dreamlike virtual world for players to explore.</p>
+            </div>
+            <div class="project">
+                <h3>PH Gov City</h3>
+                <p>A project designed to simulate governance and public administration in a multiplayer setting.</p>
+            </div>
+            <div class="project">
+                <h3>Density</h3>
+                <p>A project focused on creating high-density urban environments with scripts for bustling activity and realistic interactions.</p>
+            </div>
+            <div class="project">
+                <h3>QBCORE Framework Contribution</h3>
+                <p>Contributed small yet impactful code to the QBCORE framework, which is treasured for its simplicity and effectiveness.</p>
+                <a href="https://github.com/qbcore-framework" target="_blank">Learn More about QBCORE</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Whether you're interested in custom scripts, city development, or just want to discuss game modifications, feel free to reach out:</p>
+            <p>Email: <a href="mailto:melton07catacutan@gmail.com">melton07catacutan@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/Heavens-c" target="_blank">github.com/Heavens-c</a></p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
