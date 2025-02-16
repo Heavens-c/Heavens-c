@@ -9,7 +9,7 @@
         /* Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        /* General Styles */
+        /* Theme Variables */
         :root {
             --primary-color: #4e54c8;
             --secondary-color: #8f94fb;
@@ -22,14 +22,14 @@
         }
 
         [data-theme="dark"] {
-            --primary-color: #222;
-            --secondary-color: #111;
-            --text-color: #f4f4f9;
-            --bg-color: #181818;
-            --card-bg: #222;
+            --primary-color: #4e54c8;
+            --secondary-color: #8f94fb;
+            --text-color: #ffffff;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
             --nav-hover: #ffcc00;
-            --btn-hover: #4e54c8;
-            --btn-text-hover: #fff;
+            --btn-hover: #ffcc00;
+            --btn-text-hover: #000;
         }
 
         * {
@@ -121,6 +121,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-color);
         }
 
         .project:hover {
@@ -130,11 +131,11 @@
 
         .project h3 {
             margin-top: 0;
-            color: var(--primary-color);
+            color: var(--nav-hover);
         }
 
         .project a {
-            color: #007bff;
+            color: #ffcc00;
             text-decoration: none;
             font-weight: bold;
         }
@@ -202,28 +203,34 @@
                 <h3>Underworld</h3>
                 <p>A dark, thrilling city designed to explore the mysteries and dangers of a criminal underworld.</p>
             </div>
+            <div class="project">
+                <h3>City of Dreams</h3>
+                <p>A vibrant, dreamlike city bringing together a collaborative roleplaying experience.</p>
+            </div>
+            <div class="project">
+                <h3>PH Gov City</h3>
+                <p>A government simulation server designed for roleplayers interested in governance and public administration.</p>
+            </div>
+            <div class="project">
+                <h3>Density</h3>
+                <p>A high-density urban roleplay environment featuring bustling streets and realistic city interactions.</p>
+            </div>
+            <div class="project">
+                <h3>ARTIKULO LA CIUDAD S2</h3>
+                <p>An immersive serious roleplay server reflecting real-world urban life and Philippine laws.</p>
+            </div>
+            <div class="project">
+                <h3>Go-Market E-Commerce</h3>
+                <p>A dynamic e-commerce platform that simplifies online shopping, offering seamless transactions and an intuitive user interface.</p>
+                <a href="https://github.com/your-repo-link" target="_blank">View on GitHub</a>
+            </div>
         </div>
     </section>
-
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:melton07catacutan@gmail.com">melton07catacutan@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/Heavens-c" target="_blank">github.com/Heavens-c</a></p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Heavensc. All Rights Reserved.</p>
-        </div>
-    </footer>
 
     <script>
         function toggleTheme() {
             const body = document.body;
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === "light" ? "dark" : "light";
+            const newTheme = body.getAttribute('data-theme') === "light" ? "dark" : "light";
             body.setAttribute('data-theme', newTheme);
             document.querySelector(".toggle-theme").textContent = newTheme === "light" ? "🌙" : "☀️";
         }
