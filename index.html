@@ -3,238 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Jhoren Dollete - Script Developer & FiveM Modder</title>
     <style>
-        /* Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        /* Theme Variables */
         :root {
             --primary-color: #4e54c8;
             --secondary-color: #8f94fb;
-            --text-color: #333;
-            --bg-color: #f4f4f9;
-            --card-bg: #fff;
-            --nav-hover: #ffcc00;
-            --btn-hover: #ffcc00;
-            --btn-text-hover: #4e54c8;
+            --accent-color: #ffcc00;
+            --text-color: #2c3e50;
+            --text-secondary: #5a6c7d;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
 
         [data-theme="dark"] {
-            --primary-color: #4e54c8;
-            --secondary-color: #8f94fb;
-            --text-color: #ffffff;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --nav-hover: #ffcc00;
-            --btn-hover: #ffcc00;
-            --btn-text-hover: #000;
+            --primary-color: #5b62d4;
+            --secondary-color: #9da3ff;
+            --accent-color: #ffd700;
+            --text-color: #e8eaed;
+            --text-secondary: #b4bcc4;
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            transition: background 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 24px 0;
+            box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5em;
+            font-size: 2em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        header nav ul {
+        nav ul {
             list-style: none;
-            padding: 0;
-            margin-top: 10px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
         }
 
-        header nav ul li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        header nav ul li a {
+        nav ul li a {
             color: #fff;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+            position: relative;
         }
 
-        header nav ul li a:hover {
-            color: var(--nav-hover);
+        nav ul li a:hover {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav ul li a:hover::after {
+            width: 60%;
         }
 
         .toggle-theme {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.15);
             border: none;
             color: #fff;
-            font-size: 1.2em;
+            font-size: 1.3em;
             cursor: pointer;
-            margin-top: 10px;
-            transition: color 0.3s ease;
+            padding: 10px 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .toggle-theme:hover {
-            color: var(--nav-hover);
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
         }
 
-        .section {
-            padding: 60px 0;
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
             text-align: center;
+            background: linear-gradient(135deg, rgba(78, 84, 200, 0.05), rgba(143, 148, 251, 0.05));
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15em;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+        }
+
+        .hero strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
         }
 
         .section h2 {
-            margin-bottom: 20px;
             font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
             color: var(--primary-color);
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            margin-top: 40px;
         }
 
         .project {
             background: var(--card-bg);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            color: var(--text-color);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .project:hover::before {
+            transform: scaleX(1);
         }
 
         .project h3 {
-            margin-top: 0;
-            color: var(--nav-hover);
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .project p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin-bottom: 16px;
         }
 
         .project a {
-            color: #ffcc00;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary-color);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 8px;
+            transition: all 0.3s ease;
         }
 
         .project a:hover {
-            text-decoration: underline;
-            color: var(--btn-hover);
+            color: var(--accent-color);
+            gap: 10px;
         }
 
-        footer {
-            background: var(--primary-color);
-            color: #fff;
+        .project a::after {
+            content: '→';
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .project a:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Contact Section */
+        .contact-info {
             text-align: center;
-            padding: 15px 0;
-            margin-top: 40px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
         }
 
         .btn {
             display: inline-block;
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 14px 32px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s ease, color 0.3s ease;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
 
         .btn:hover {
-            background: var(--btn-hover);
-            color: var(--btn-text-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            text-align: center;
+            padding: 24px 0;
+            margin-top: 60px;
+            font-size: 0.95em;
+        }
+
+        footer p {
+            opacity: 0.95;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            .hero h2 {
+                font-size: 1.8em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .section h2 {
+                font-size: 1.8em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body data-theme="light">
     <header>
         <div class="container">
-            <h1>Welcome to My Portfolio</h1>
-            <nav>
-                <ul>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="toggle-theme" onclick="toggleTheme()">🌙</button>
+            <div class="header-content">
+                <h1>Jhoren Dollete</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <section id="about" class="section">
+    <section id="about" class="hero">
         <div class="container">
-            <h2>About Me</h2>
-            <p>Hi, I'm <strong>Jhoren Dollete</strong>, a passionate script developer specializing in FiveM modding. I create immersive experiences and custom scripts to enhance gameplay.</p>
+            <h2>Script Developer & FiveM Modder</h2>
+            <p>Hi, I'm <strong>Jhoren Dollete</strong>, a passionate script developer specializing in FiveM modding. I create immersive experiences and custom scripts to enhance gameplay, bringing unique worlds to life for roleplay communities.</p>
         </div>
     </section>
 
     <section id="projects" class="section">
         <div class="container">
-            <h2>My Projects</h2>
-            <div class="project">
-                <h3>Billionaire City</h3>
-                <p>A high-end city with unique scripts and immersive gameplay tailored for players who want an unparalleled luxury gaming experience.</p>
-            </div>
-            <div class="project">
-                <h3>Underworld</h3>
-                <p>A dark, thrilling city designed to explore the mysteries and dangers of a criminal underworld.</p>
-            </div>
-            <div class="project">
-                <h3>City of Dreams</h3>
-                <p>A vibrant, dreamlike city bringing together a collaborative roleplaying experience.</p>
-            </div>
-            <div class="project">
-                <h3>PH Gov City</h3>
-                <p>A government simulation server designed for roleplayers interested in governance and public administration.</p>
-            </div>
-            <div class="project">
-                <h3>Density</h3>
-                <p>A high-density urban roleplay environment featuring bustling streets and realistic city interactions.</p>
-            </div>
-            <div class="project">
-                <h3>ARTIKULO LA CIUDAD S2</h3>
-                <p>An immersive serious roleplay server reflecting real-world urban life and Philippine laws.</p>
-            </div>
-            <div class="project">
-                <h3>Go-Market E-Commerce</h3>
-                <p>A dynamic e-commerce platform that simplifies online shopping, offering seamless transactions and an intuitive user interface.</p>
-                <a href="https://github.com/your-repo-link" target="_blank">View on GitHub</a>
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>Billionaire City</h3>
+                    <p>A high-end luxury city with unique scripts and immersive gameplay tailored for players seeking an unparalleled premium gaming experience.</p>
+                </div>
+                <div class="project">
+                    <h3>Underworld</h3>
+                    <p>A dark, thrilling city designed to explore the mysteries and dangers of a criminal underworld with intense roleplay scenarios.</p>
+                </div>
+                <div class="project">
+                    <h3>City of Dreams</h3>
+                    <p>A vibrant, dreamlike city bringing together a collaborative roleplaying experience with endless possibilities.</p>
+                </div>
+                <div class="project">
+                    <h3>PH Gov City</h3>
+                    <p>A government simulation server designed for roleplayers interested in governance, public administration, and civic engagement.</p>
+                </div>
+                <div class="project">
+                    <h3>Density</h3>
+                    <p>A high-density urban roleplay environment featuring bustling streets, realistic city interactions, and dynamic gameplay.</p>
+                </div>
+                <div class="project">
+                    <h3>ARTIKULO LA CIUDAD S2</h3>
+                    <p>An immersive serious roleplay server reflecting real-world urban life and Philippine laws with authentic scenarios.</p>
+                </div>
+                <div class="project">
+                    <h3>Go-Market E-Commerce</h3>
+                    <p>A dynamic e-commerce platform that simplifies online shopping, offering seamless transactions and an intuitive user interface.</p>
+                    <a href="https://github.com/your-repo-link" target="_blank">View on GitHub</a>
+                </div>
             </div>
         </div>
     </section>
 
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <p>Interested in collaborating or learning more about my work? I'd love to hear from you!</p>
+                <a href="mailto:your.email@example.com" class="btn">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jhoren Dollete. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
         function toggleTheme() {
             const body = document.body;
-            const newTheme = body.getAttribute('data-theme') === "light" ? "dark" : "light";
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             body.setAttribute('data-theme', newTheme);
-            document.querySelector(".toggle-theme").textContent = newTheme === "light" ? "🌙" : "☀️";
+            document.querySelector('.toggle-theme').textContent = newTheme === 'light' ? '🌙' : '☀️';
+            localStorage.setItem('theme', newTheme);
         }
+
+        // Load saved theme preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            document.querySelector('.toggle-theme').textContent = savedTheme === 'light' ? '🌙' : '☀️';
+        });
     </script>
 </body>
 </html>
-
