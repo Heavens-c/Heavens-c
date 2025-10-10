@@ -365,6 +365,102 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+            margin-bottom: 50px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .skill-category p {
+            color: var(--text-secondary);
+            font-size: 0.92em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .tech-tags span {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .core-competencies {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .core-competencies h3 {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+
+        .competencies-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .competencies-list span {
+            background: var(--bg-color);
+            color: var(--text-color);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .competencies-list span:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -375,6 +471,7 @@
                 <nav>
                     <ul>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button></li>
@@ -387,7 +484,100 @@
     <section id="about" class="hero">
         <div class="container">
             <h2>Script Developer & FiveM Modder</h2>
-            <p>Hi, I'm <strong>Jhoren Dollete</strong>, a passionate script developer specializing in FiveM modding. I create immersive experiences and custom scripts to enhance gameplay, bringing unique worlds to life for roleplay communities.</p>
+            <p>Hi, I'm <strong>Jhoren Dollete</strong>, a passionate script developer specializing in FiveM modding and an aspiring back-end developer. I create immersive experiences and custom scripts to enhance gameplay, bringing unique worlds to life for roleplay communities while expanding my skills in server-side development.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="section" style="background: linear-gradient(135deg, rgba(78, 84, 200, 0.03), rgba(143, 148, 251, 0.03));">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Web & System Development</h3>
+                    <p>Designed and built registration systems, dashboards, and modern web portals. Integrated user roles, admin privileges, and responsive UI.</p>
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>PHP</span>
+                        <span>MySQL</span>
+                        <span>Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">🎮</div>
+                    <h3>Game Server Scripting</h3>
+                    <p>Customized and optimized roleplay scripts for FiveM servers. Created trap zones, business management, anti-exploit logic, and leaderboard tracking.</p>
+                    <div class="tech-tags">
+                        <span>Lua</span>
+                        <span>SQL</span>
+                        <span>JavaScript</span>
+                        <span>JSON</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">📱</div>
+                    <h3>Mobile Development</h3>
+                    <p>Created Android apps for IoT device control and monitoring. Integrated database syncing and real-time updates with modern UI design.</p>
+                    <div class="tech-tags">
+                        <span>Kotlin</span>
+                        <span>Android Studio</span>
+                        <span>Jetpack Compose</span>
+                        <span>Firebase</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">🤖</div>
+                    <h3>Embedded & IoT Systems</h3>
+                    <p>Developed smart automation projects like SUNSWEEP and Smart Bike Lock. Combined sensors, wireless modules, and dashboards for monitoring.</p>
+                    <div class="tech-tags">
+                        <span>Arduino</span>
+                        <span>ESP32</span>
+                        <span>Bluetooth</span>
+                        <span>NFC</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">🧠</div>
+                    <h3>Machine Learning Integration</h3>
+                    <p>Embedded learning-based logic and automation functions into dashboards for smart response systems using data-driven actions.</p>
+                    <div class="tech-tags">
+                        <span>PHP</span>
+                        <span>Composer</span>
+                        <span>Firebase ML Kit</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-icon">✨</div>
+                    <h3>Creative & Interactive Projects</h3>
+                    <p>Developed interactive experiences combining text, sound, and guided structure for immersive user journeys.</p>
+                    <div class="tech-tags">
+                        <span>HTML5</span>
+                        <span>Audio Editing</span>
+                        <span>UX Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="core-competencies">
+                <h3>Core Competencies</h3>
+                <div class="competencies-list">
+                    <span>Logical & Modular Project Structuring</span>
+                    <span>Frontend + Backend Integration</span>
+                    <span>Embedded Hardware Prototyping</span>
+                    <span>Real-time Database Connectivity</span>
+                    <span>UI/UX Layout Planning</span>
+                    <span>Technical Documentation</span>
+                    <span>Creative System Design</span>
+                    <span>Server Optimization</span>
+                </div>
+            </div>
         </div>
     </section>
 
