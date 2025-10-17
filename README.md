@@ -18,3 +18,5 @@ I'm now working as a part-time/full-time script developer on both the backend an
 
 
 ✍ my current knowledge is PHP(i can say basic) and Lua(moderate) (mysql-php-mariadb"moderate") and slight knowledgeable into C and C++ plan to learn rust since they kinda close to C++ and also python also kinda same into lua also forgot to mention Java Gui Based app(basic knowledge i can rate it my self)
+
+https://roadmap.sh/card/tall/67977cea32284498bc4c30b0?variant=dark
