@@ -7,8 +7,12 @@
 I'm now working as a part-time/full-time script developer on both the backend and the FiveM modification for a popular open world game that allows you to play on dedicated servers. This allows you to customize your multiplayer experience. With FiveM, you get an unparalleled gaming experience on your own servers, where you are not limited by in-game money. I've created a city called Billionaire City / Underworld / City Of Dreams (part of it), PH Gov City (some of it), Density (some of it), and Project Rev v1,v2. I contributed to a framework in fiveM that serves as small code but is kept as a precious value. Thank you, QBCORE Framework, for valuing my small code. So my life begins in 2019. Until now
 
 
+## 📊 GitHub Stats
 
-![Top Langs](https://github-readme-stats.vercel.app)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Heavens-c&show_icons=true&theme=tokyonight)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Heavens-c&layout=compact&theme=tokyonight)
+
 
 
 🖥Work as Script Developer for FiveM Modification
