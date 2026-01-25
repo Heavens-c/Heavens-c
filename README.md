@@ -8,6 +8,9 @@ I'm now working as a part-time/full-time script developer on both the backend an
 
 
 
+![Top Langs](https://github-readme-stats.vercel.app)
+
+
 🖥Work as Script Developer for FiveM Modification
 • Part/full-time job specializing in script development for FiveM modification for Open World game.
 • Provides a matchless gaming experience on dedicated servers.
