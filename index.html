@@ -275,97 +275,6 @@
             transform: translateX(4px);
         }
 
-        /* Contact Section */
-        .contact-info {
-            text-align: center;
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info p {
-            font-size: 1.05em;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-            text-align: center;
-            padding: 24px 0;
-            margin-top: 60px;
-            font-size: 0.95em;
-        }
-
-        footer p {
-            opacity: 0.95;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            header h1 {
-                font-size: 1.6em;
-            }
-
-            .hero h2 {
-                font-size: 1.8em;
-            }
-
-            .hero p {
-                font-size: 1em;
-            }
-
-            .section h2 {
-                font-size: 1.8em;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 50px 0;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -461,6 +370,97 @@
             color: white;
             transform: translateY(-2px);
         }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            font-size: 1.05em;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            text-align: center;
+            padding: 24px 0;
+            margin-top: 60px;
+            font-size: 0.95em;
+        }
+
+        footer p {
+            opacity: 0.95;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            .hero h2 {
+                font-size: 1.8em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .section h2 {
+                font-size: 1.8em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -472,6 +472,8 @@
                     <ul>
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#training">OJT</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><button class="toggle-theme" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button></li>
@@ -491,7 +493,7 @@
     <section id="skills" class="section" style="background: linear-gradient(135deg, rgba(78, 84, 200, 0.03), rgba(143, 148, 251, 0.03));">
         <div class="container">
             <h2>Skills & Expertise</h2>
-            
+
             <div class="skills-grid">
                 <div class="skill-category">
                     <div class="skill-icon">🌐</div>
@@ -576,6 +578,103 @@
                     <span>Technical Documentation</span>
                     <span>Creative System Design</span>
                     <span>Server Optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ TOOLS SECTION -->
+    <section id="tools" class="section">
+        <div class="container">
+            <h2>Tools I Use</h2>
+
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>Development Tools</h3>
+                    <p>Tools I use for scripting, web development, and building systems.</p>
+                    <div class="tech-tags">
+                        <span>VS Code</span>
+                        <span>GitHub</span>
+                        <span>XAMPP</span>
+                        <span>MySQL Workbench</span>
+                        <span>Postman</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>FiveM & Server Tools</h3>
+                    <p>Utilities used for managing and developing FiveM roleplay servers.</p>
+                    <div class="tech-tags">
+                        <span>FXServer</span>
+                        <span>txAdmin</span>
+                        <span>HeidiSQL</span>
+                        <span>Discord Webhooks</span>
+                        <span>SQL Queries</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>IT & Troubleshooting</h3>
+                    <p>Tools used for device support, diagnostics, and on-site IT operations.</p>
+                    <div class="tech-tags">
+                        <span>Windows Tools</span>
+                        <span>Active Directory</span>
+                        <span>Remote Desktop</span>
+                        <span>BIOS Setup</span>
+                        <span>Device Imaging</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Hardware & Cable Management</h3>
+                    <p>Common tools for clean desk setup, cable grooming, and workstation maintenance.</p>
+                    <div class="tech-tags">
+                        <span>Cable Ties</span>
+                        <span>Velcro Straps</span>
+                        <span>Cable Clips</span>
+                        <span>Labeling</span>
+                        <span>Screwdriver Set</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ OJT SECTION -->
+    <section id="training" class="section" style="background: linear-gradient(135deg, rgba(78, 84, 200, 0.03), rgba(143, 148, 251, 0.03));">
+        <div class="container">
+            <h2>On-the-Job Training (OJT)</h2>
+
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>Concentrix Clark – IT Department</h3>
+                    <p>
+                        Hands-on experience supporting onsite IT operations, workstation maintenance, and hardware setup
+                        within a BPO environment. Assisted with asset management, cable grooming, and work area organization
+                        to maintain clean and efficient workstations.
+                    </p>
+                    <div class="tech-tags">
+                        <span>Workstation Re-image</span>
+                        <span>Manual Reboot</span>
+                        <span>Cable Grooming</span>
+                        <span>Peripheral Management</span>
+                        <span>Floor Support</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Key Responsibilities</h3>
+                    <p>
+                        Supported daily tasks like organizing excess peripherals, maintaining desk layouts, and ensuring
+                        stable PC operation across multiple floors in the production site.
+                    </p>
+                    <div class="tech-tags">
+                        <span>PC Deployment</span>
+                        <span>Troubleshooting</span>
+                        <span>Inventory Assistance</span>
+                        <span>Basic Networking</span>
+                        <span>Site Support</span>
+                    </div>
                 </div>
             </div>
         </div>
