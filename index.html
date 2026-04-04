@@ -1,229 +1,643 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jhoren Dollete | IT Support | Backend Developer | FiveM Developer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jhoren Dollete | IT Support · Backend · FiveM</title>
 
-```
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts: Syne (display) + DM Mono (code feel) + DM Sans (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-<style>
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────────────────── */
     :root {
-        --primary-color: #4e54c8;
-        --secondary-color: #8f94fb;
-        --accent-color: #ffcc00;
-        --text-color: #2c3e50;
-        --text-secondary: #5a6c7d;
-        --bg-color: #f8f9fa;
-        --card-bg: #ffffff;
+      --bg:          #0c0d10;
+      --surface:     #13151a;
+      --surface-2:   #1c1f27;
+      --border:      rgba(255,255,255,0.07);
+      --accent:      #5b8dee;
+      --accent-dim:  rgba(91,141,238,0.15);
+      --accent-glow: rgba(91,141,238,0.35);
+      --text:        #e8eaf0;
+      --muted:       #6e7685;
+      --tag-bg:      rgba(91,141,238,0.12);
+      --radius:      10px;
+      --radius-lg:   16px;
+      --shadow:      0 4px 24px rgba(0,0,0,0.45);
+      --transition:  0.22s ease;
     }
 
-    [data-theme="dark"] {
-        --text-color: #e8eaed;
-        --text-secondary: #b4bcc4;
-        --bg-color: #0f0f0f;
-        --card-bg: #1a1a1a;
+    [data-theme="light"] {
+      --bg:          #f4f5f8;
+      --surface:     #ffffff;
+      --surface-2:   #eef0f5;
+      --border:      rgba(0,0,0,0.08);
+      --accent:      #3b6fd4;
+      --accent-dim:  rgba(59,111,212,0.10);
+      --accent-glow: rgba(59,111,212,0.25);
+      --text:        #1a1d26;
+      --muted:       #7a8294;
+      --tag-bg:      rgba(59,111,212,0.10);
+      --shadow:      0 4px 20px rgba(0,0,0,0.10);
     }
 
+    /* ─── RESET ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        background: var(--bg-color);
-        color: var(--text-color);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+      transition: background var(--transition), color var(--transition);
     }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; padding: 0; }
+    img { display: block; max-width: 100%; }
 
+    /* ─── SCROLLBAR ──────────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 99px; }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────────────── */
     .container {
-        max-width: 1100px;
-        margin: auto;
-        padding: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
+    .section { padding: 56px 0; }
+    .section + .section { border-top: 1px solid var(--border); }
 
+    /* ─── NAVIGATION ─────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(12,13,16,0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    [data-theme="light"] nav {
+      background: rgba(244,245,248,0.85);
+    }
+    .nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Theme toggle */
+    #theme-toggle {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      width: 36px; height: 20px;
+      cursor: pointer;
+      position: relative;
+      transition: background var(--transition);
+      flex-shrink: 0;
+    }
+    #theme-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: transform var(--transition);
+    }
+    [data-theme="light"] #theme-toggle::after { transform: translateX(16px); }
+
+    /* ─── HEADER / HERO ──────────────────────────────────────────────── */
     header {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        padding: 20px;
-        text-align: center;
+      /* Override old gradient — replaced by subtle noise bg + accent line */
+      background: none;
+      color: inherit;
+      padding: 0;
+      text-align: left;
+    }
+    .hero {
+      padding: 60px 0 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Ambient glow blob */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -60px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 22px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    h1 .accent { color: var(--accent); }
+    .hero p {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: var(--tag-bg);
+      color: var(--accent);
+      border: 1px solid rgba(91,141,238,0.2);
+      letter-spacing: 0.04em;
     }
 
-    h1, h2, h3 {
-        margin-bottom: 10px;
+    /* ─── SECTION HEADINGS ───────────────────────────────────────────── */
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
     }
 
-    .section {
-        padding: 50px 0;
-    }
-
-    .grid {
-        display: grid;
-        gap: 20px;
-    }
-
+    /* ─── CARDS ──────────────────────────────────────────────────────── */
     .card {
-        background: var(--card-bg);
-        padding: 20px;
-        border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover {
+      border-color: rgba(91,141,238,0.35);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
 
+    /* ─── SKILLS GRID ────────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .skill-card:hover {
+      border-color: rgba(91,141,238,0.35);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .skill-card h3 {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .skill-tags span {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 3px 8px;
+      background: var(--surface-2);
+      border-radius: 4px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    /* ─── PROJECTS GRID ──────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .project-card:hover {
+      border-color: rgba(91,141,238,0.35);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .project-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .project-card h3 { font-size: 14px; margin-bottom: 0; }
+    .project-card p { font-size: 13px; color: var(--muted); flex: 1; }
+
+    /* ─── EXPERIENCE TIMELINE ────────────────────────────────────────── */
+    .experience-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      position: relative;
+      border-left: 3px solid var(--accent);
+    }
+    .exp-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .experience-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .experience-block ul li {
+      font-size: 13.5px;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+    }
+    .experience-block ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ─── EDUCATION ──────────────────────────────────────────────────── */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .edu-icon {
+      width: 40px; height: 40px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .edu-card h3 { font-size: 14px; margin-bottom: 4px; }
+    .edu-card p { font-size: 13px; color: var(--muted); }
+
+    /* ─── CONTACT ────────────────────────────────────────────────────── */
+    .contact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-block p {
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    .contact-email {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--surface-2);
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────────────── */
+    .btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
     .btn {
-        display: inline-block;
-        background: var(--primary-color);
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 6px;
-        margin: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 18px;
+      border-radius: 7px;
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .btn.outline {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn.outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: none;
     }
 
-    ul {
-        padding-left: 20px;
+    /* ─── FOOTER ─────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
     }
-</style>
-```
 
+    /* ─── MOBILE ─────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links a:not(:last-child) { display: none; }
+      .hero { padding: 44px 0 36px; }
+      h1 { font-size: 28px; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
+      .contact-block { padding: 22px; }
+    }
+
+    /* ─── FADE-IN ─────────────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeUp 0.5s ease both; }
+    .fade-in:nth-child(2) { animation-delay: 0.06s; }
+    .fade-in:nth-child(3) { animation-delay: 0.12s; }
+    .fade-in:nth-child(4) { animation-delay: 0.18s; }
+  </style>
 </head>
 
 <body>
 
+<!-- ─── NAV ──────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">jhoren<span>.</span>dev</div>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <button id="theme-toggle" aria-label="Toggle light/dark mode"></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO (was <header>) ───────────────────────────────────────────── -->
 <header>
-    <h1>Jhoren Dollete</h1>
-    <p>IT Support | Backend Developer | FiveM Developer</p>
+  <div class="hero">
+    <div class="container">
+      <p class="hero-eyebrow fade-in">Available for work</p>
+      <h1 class="fade-in">Jhoren <span class="accent">Dollete</span></h1>
+      <div class="hero-badges fade-in">
+        <span class="badge">IT Support</span>
+        <span class="badge">Backend Developer</span>
+        <span class="badge">FiveM Developer</span>
+      </div>
+      <p class="fade-in">
+        IT professional with hands-on experience in technical support, workstation deployment,
+        and troubleshooting within enterprise environments. I also specialize in backend development
+        and FiveM server scripting, building scalable systems and optimizing performance.
+      </p>
+      <div class="btn-group fade-in">
+        <a href="#contact" class="btn">Get in Touch</a>
+        <!-- <a href="cv.pdf" download class="btn outline">↓ Download CV</a> -->
+      </div>
+    </div>
+  </div>
 </header>
 
-<!-- ABOUT -->
-
-<section class="section">
-    <div class="container">
-        <h2>Professional Summary</h2>
-        <p>
-            I am an IT professional with hands-on experience in technical support, workstation deployment,
-            and troubleshooting within enterprise environments. I also specialize in backend development
-            and FiveM server scripting, building scalable systems and optimizing performance.
-        </p>
+<!-- ─── SKILLS ────────────────────────────────────────────────────────── -->
+<section class="section" id="skills">
+  <div class="container">
+    <h2>Skills</h2>
+    <div class="grid skills-grid">
+      <div class="skill-card fade-in">
+        <h3>⟨/⟩ Web Dev</h3>
+        <div class="skill-tags">
+          <span>HTML</span><span>CSS</span><span>PHP</span>
+          <span>MySQL</span><span>Bootstrap</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>🎮 Game Dev</h3>
+        <div class="skill-tags">
+          <span>Lua</span><span>SQL</span><span>JavaScript</span>
+          <span>FiveM</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>🖥 IT Support</h3>
+        <div class="skill-tags">
+          <span>Troubleshooting</span><span>Deployment</span>
+          <span>Imaging</span><span>Hardware</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>🛠 Tools</h3>
+        <div class="skill-tags">
+          <span>VS Code</span><span>GitHub</span>
+          <span>XAMPP</span><span>Postman</span><span>MySQL WB</span>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- SKILLS -->
-
-<section class="section">
-    <div class="container">
-        <h2>Skills</h2>
-        <div class="grid">
-
-```
-        <div class="card">
-            <h3>Web Development</h3>
-            <p>HTML, CSS, PHP, MySQL, Bootstrap</p>
-        </div>
-
-        <div class="card">
-            <h3>Game Development</h3>
-            <p>Lua, SQL, JavaScript, FiveM Scripting</p>
-        </div>
-
-        <div class="card">
-            <h3>IT Support</h3>
-            <p>Troubleshooting, Deployment, Imaging, Hardware Setup</p>
-        </div>
-
-        <div class="card">
-            <h3>Tools</h3>
-            <p>VS Code, GitHub, XAMPP, Postman, MySQL Workbench</p>
-        </div>
-
+<!-- ─── PROJECTS ──────────────────────────────────────────────────────── -->
+<section class="section" id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="grid projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-icon">🗺</div>
+        <h3>FiveM Roleplay Servers</h3>
+        <p>Developed and customized multiple RP servers with advanced scripting and system integration.</p>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-icon">🛒</div>
+        <h3>E-Commerce System</h3>
+        <p>Built a full-stack online store with database integration and admin dashboard.</p>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-icon">🔌</div>
+        <h3>IoT Projects</h3>
+        <p>Created smart systems using Arduino and ESP32 for automation and monitoring.</p>
+      </div>
     </div>
-</div>
-```
-
+  </div>
 </section>
 
-<!-- EXPERIENCE -->
-
-<section class="section">
-    <div class="container">
-        <h2>Professional Experience</h2>
-
-```
-    <div class="card">
-        <h3>IT Support Intern – Concentrix Clark</h3>
-        <ul>
-            <li>Deployed and re-imaged workstation systems</li>
-            <li>Performed troubleshooting and system diagnostics</li>
-            <li>Managed peripherals (keyboard, mouse, headsets)</li>
-            <li>Provided floor support across multiple departments</li>
-            <li>Maintained cable organization and workstation setup</li>
-        </ul>
+<!-- ─── EXPERIENCE ────────────────────────────────────────────────────── -->
+<section class="section" id="experience">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="card experience-block">
+      <p class="exp-meta">Internship · Clark, Philippines</p>
+      <h3>IT Support Intern — Concentrix Clark</h3>
+      <ul>
+        <li>Deployed and re-imaged workstation systems</li>
+        <li>Performed troubleshooting and system diagnostics</li>
+        <li>Managed peripherals (keyboard, mouse, headsets)</li>
+        <li>Provided floor support across multiple departments</li>
+        <li>Maintained cable organization and workstation setup</li>
+      </ul>
     </div>
-
-</div>
-```
-
+  </div>
 </section>
 
-<!-- PROJECTS -->
-
-<section class="section">
-    <div class="container">
-        <h2>Projects</h2>
-
-```
-    <div class="grid">
-        <div class="card">
-            <h3>FiveM Roleplay Servers</h3>
-            <p>Developed and customized multiple RP servers with advanced scripting and system integration.</p>
-        </div>
-
-        <div class="card">
-            <h3>E-Commerce System</h3>
-            <p>Built a full-stack online store with database integration and admin dashboard.</p>
-        </div>
-
-        <div class="card">
-            <h3>IoT Projects</h3>
-            <p>Created smart systems using Arduino and ESP32 for automation and monitoring.</p>
-        </div>
-    </div>
-
-</div>
-```
-
-</section>
-
-<!-- EDUCATION -->
-
-<section class="section">
-    <div class="container">
-        <h2>Education</h2>
-
-```
-    <div class="card">
+<!-- ─── EDUCATION ─────────────────────────────────────────────────────── -->
+<section class="section" id="education">
+  <div class="container">
+    <h2>Education</h2>
+    <div class="edu-card card">
+      <div class="edu-icon">🎓</div>
+      <div>
         <h3>Bachelor of Science in Information Technology</h3>
         <p>Focused on software development, networking, and systems.</p>
+      </div>
     </div>
-
-</div>
-```
-
+  </div>
 </section>
 
-<!-- CONTACT -->
-
-<section class="section">
-    <div class="container">
-        <h2>Contact</h2>
-
-```
-    <p>Email: yourrealemail@gmail.com</p>
-
-    <a href="mailto:yourrealemail@gmail.com" class="btn">Email Me</a>
-    <a href="https://github.com/yourusername" target="_blank" class="btn">GitHub</a>
-    <a href="cv.pdf" download class="btn">Download CV</a>
-
-</div>
-```
-
+<!-- ─── CONTACT ───────────────────────────────────────────────────────── -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="contact-block">
+      <p>Open to full-time roles, freelance projects, and collaborations.</p>
+      <span class="contact-email">dhudz.421@gmail.com</span>
+      <div class="btn-group">
+        <a href="mailto:dhudz.421@gmail.com" class="btn">✉ Email Me</a>
+        <a href="https://github.com/Heavens-c" target="_blank" class="btn outline">⎆ GitHub</a>
+        <!-- <a href="cv.pdf" download class="btn outline">↓ Download CV</a> -->
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
+<footer>
+  © 2025 Jhoren Dollete · Built with care
+</footer>
+
+<!-- ─── MINIMAL JS: theme toggle only ────────────────────────────────── -->
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Persist preference
+  const saved = localStorage.getItem('theme') || 'dark';
+  html.setAttribute('data-theme', saved);
+
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>
 
 </body>
 </html>
