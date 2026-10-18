@@ -1,6 +1,6 @@
 # About Me
 
-Hi, I'm **Jh**** D******, a **Bachelor of Science in Information Technology graduate** from **Our Lady of Fatima University (OLFU)**.
+Hi, I'm Jhoren, a **Bachelor of Science in Information Technology graduate** from **Our Lady of Fatima University (OLFU)**.
 
 My college journey was filled with challenges and hardships. I started my studies in **2014**, but due to personal and financial difficulties, I had to stop in **2018**. After several years away from school and the challenges brought by the pandemic, I returned to college in **2023** with a renewed determination to finish my degree and pursue my dreams.
 
