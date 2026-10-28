@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,6 +24,24 @@
       --radius-sm: 10px;
       --focus: 0 0 0 3px rgba(46, 182, 172, 0.34);
       --shadow: 0 16px 40px rgba(0, 0, 0, 0.42);
+      --bg-grid: rgba(255, 255, 255, 0.018);
+    }
+
+    [data-theme="light"] {
+      --abyss: #e9edf3;
+      --abyss-soft: #f2f5fa;
+      --panel: rgba(255, 255, 255, 0.92);
+      --line: rgba(122, 95, 39, 0.26);
+      --gold: #9a7331;
+      --gold-bright: #7f5f27;
+      --teal: #167f78;
+      --ink: #15253d;
+      --muted: #4d6078;
+      --ok: #1b8f62;
+      --warn: #8a5d10;
+      --focus: 0 0 0 3px rgba(22, 127, 120, 0.24);
+      --shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+      --bg-grid: rgba(0, 0, 0, 0.03);
     }
 
     * {
@@ -41,8 +59,8 @@
       font-family: "Inter", sans-serif;
       color: var(--ink);
       background:
-        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px),
         radial-gradient(circle at 12% 10%, rgba(46, 182, 172, 0.16), transparent 42%),
         radial-gradient(circle at 88% 22%, rgba(201, 169, 110, 0.16), transparent 40%),
         var(--abyss);
@@ -95,6 +113,7 @@
       gap: 0.9rem;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
     }
 
     .nav a {
@@ -110,6 +129,38 @@
       color: var(--ink);
       border-color: var(--line);
       background: rgba(201, 169, 110, 0.1);
+    }
+
+    #theme-toggle {
+      width: 2.45rem;
+      height: 1.4rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 13, 23, 0.75);
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    #theme-toggle::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 50%;
+      background: var(--teal);
+      transition: transform 0.2s ease;
+    }
+
+    [data-theme="light"] #theme-toggle {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="light"] #theme-toggle::after {
+      transform: translateX(1.03rem);
     }
 
     .hero {
@@ -134,6 +185,14 @@
       max-width: 64ch;
       color: var(--muted);
       margin-bottom: 1.5rem;
+    }
+
+    .hero .identity {
+      color: var(--gold-bright);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      margin-bottom: 0.5rem;
     }
 
     .hero-meta {
@@ -217,6 +276,29 @@
       gap: 1rem;
     }
 
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .meta {
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.45rem;
+    }
+
+    .project-card p {
+      margin: 0;
+    }
+
     .contact-strip {
       margin: 0.6rem 0 2.8rem;
       padding: 1.2rem;
@@ -256,9 +338,36 @@
     }
 
     button.copy-btn:focus-visible,
-    .nav a:focus-visible {
+    .nav a:focus-visible,
+    #theme-toggle:focus-visible,
+    .contact-btn:focus-visible {
       outline: none;
       box-shadow: var(--focus);
+    }
+
+    .contact-extra {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.5rem 0.95rem;
+      font-size: 0.92rem;
+      color: var(--ink);
+      background: rgba(7, 13, 23, 0.5);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--teal);
+      background: rgba(46, 182, 172, 0.16);
+      transform: translateY(-1px);
     }
 
     .copy-status {
@@ -280,15 +389,28 @@
       text-align: center;
     }
 
+    .fade-in {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.42s ease, transform 0.42s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 920px) {
-      .capabilities {
+      .capabilities,
+      .portfolio-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 720px) {
       .grid-two,
-      .capabilities {
+      .capabilities,
+      .portfolio-grid {
         grid-template-columns: 1fr;
       }
 
@@ -300,6 +422,10 @@
       .nav {
         width: 100%;
         justify-content: flex-start;
+      }
+
+      #theme-toggle {
+        margin-left: auto;
       }
     }
 
@@ -324,6 +450,11 @@
       button.copy-btn {
         width: 100%;
       }
+
+      .contact-btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -333,21 +464,30 @@
       <a class="brand" href="#top">Sitio Maharlika <span>RP PH</span></a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#hero">Overview</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
         <a href="#dossiers">Server Dossiers</a>
         <a href="#capabilities">Capabilities</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle light and dark theme"></button>
       </nav>
     </div>
   </header>
 
   <main id="top">
     <section class="hero wrap" id="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">Freelance <span class="teal">FiveM & RedM</span> Developer</h1>
+      <p class="identity fade-in">Jhoren Dollete</p>
+      <h1 id="hero-title" class="fade-in">Freelance <span class="teal">FiveM & RedM</span> Developer</h1>
       <p>
         Mission-ready scripting and systems development for Sitio Maharlika RP PH.
         I design stable gameplay features, optimize server performance, and build maintainable backend flows for immersive roleplay communities.
       </p>
       <div class="hero-meta" aria-label="Role summary">
+        <span class="pill">IT Support</span>
+        <span class="pill">Backend Developer</span>
+        <span class="pill">FiveM Developer</span>
         <span class="pill">Lua / CFX Stack</span>
         <span class="pill">Server Logic & Integrations</span>
         <span class="pill">Freelance Availability</span>
@@ -406,12 +546,85 @@
       </div>
     </section>
 
+    <section class="wrap" id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Technical Skills Matrix</h2>
+      <div class="portfolio-grid">
+        <article class="card fade-in" aria-labelledby="skills-web-title">
+          <h3 id="skills-web-title">Web & Backend</h3>
+          <ul class="capability-list">
+            <li>HTML, CSS, PHP, JavaScript</li>
+            <li>MySQL-backed feature development</li>
+            <li>Bootstrap and API integration workflows</li>
+          </ul>
+        </article>
+        <article class="card fade-in" aria-labelledby="skills-fivem-title">
+          <h3 id="skills-fivem-title">FiveM & Scripting</h3>
+          <ul class="capability-list">
+            <li>Lua resource scripting and tuning</li>
+            <li>SQL-connected gameplay systems</li>
+            <li>Performance-minded server optimization</li>
+          </ul>
+        </article>
+        <article class="card fade-in" aria-labelledby="skills-support-title">
+          <h3 id="skills-support-title">IT Support Operations</h3>
+          <ul class="capability-list">
+            <li>Workstation deployment and imaging</li>
+            <li>Hardware and peripheral troubleshooting</li>
+            <li>Enterprise floor support coordination</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Featured Project Records</h2>
+      <div class="portfolio-grid">
+        <article class="card project-card fade-in" aria-labelledby="project-rp-title">
+          <h3 id="project-rp-title">FiveM Roleplay Server Systems</h3>
+          <p>Developed and customized RP servers with advanced scripting, gameplay modules, and systems integration.</p>
+        </article>
+        <article class="card project-card fade-in" aria-labelledby="project-ecom-title">
+          <h3 id="project-ecom-title">E-Commerce Platform Build</h3>
+          <p>Implemented a full-stack online store with product management, database integrations, and admin controls.</p>
+        </article>
+        <article class="card project-card fade-in" aria-labelledby="project-iot-title">
+          <h3 id="project-iot-title">IoT Automation Prototypes</h3>
+          <p>Built Arduino and ESP32-based monitoring and automation prototypes for practical connected workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience Brief</h2>
+      <article class="card fade-in" aria-labelledby="experience-role-title">
+        <span class="meta">Internship · Clark, Philippines</span>
+        <h3 id="experience-role-title">IT Support Intern — Concentrix Clark</h3>
+        <ul class="capability-list">
+          <li>Deployed and re-imaged workstation systems across departments.</li>
+          <li>Performed diagnostics, troubleshooting, and floor-level technical support.</li>
+          <li>Managed peripherals, cable organization, and setup reliability standards.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="wrap" id="education" aria-labelledby="education-title">
+      <h2 id="education-title">Education</h2>
+      <article class="card fade-in" aria-labelledby="education-degree-title">
+        <h3 id="education-degree-title">Bachelor of Science in Information Technology</h3>
+        <p>Focused on software development, networking, and systems implementation.</p>
+      </article>
+    </section>
+
     <section class="wrap" id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact Strip</h2>
       <div class="contact-strip" role="region" aria-live="polite" aria-label="Discord contact actions">
         <p>
           For project inquiries and collaboration, use Discord: <strong>SitioMaharlikaDev</strong>
         </p>
+        <div class="contact-extra">
+          <a class="contact-btn" href="mailto:dhudz.421@gmail.com">Email: dhudz.421@gmail.com</a>
+          <a class="contact-btn" href="https://github.com/Heavens-c" target="_blank" rel="noopener noreferrer">GitHub: @Heavens-c</a>
+        </div>
         <div class="discord-actions">
           <button class="copy-btn" id="copy-discord-main" data-copy-value="SitioMaharlikaDev" type="button">
             Copy Discord (Main)
@@ -426,10 +639,24 @@
   </main>
 
   <footer>
-    © 2026 Sitio Maharlika RP PH — Freelance FiveM & RedM Development
+    © 2026 Jhoren Dollete · Sitio Maharlika RP PH — IT Support · Backend · FiveM & RedM Development
   </footer>
 
   <script>
+    const htmlRoot = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+    const preferredTheme = savedTheme || 'dark';
+    htmlRoot.setAttribute('data-theme', preferredTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const nextTheme = htmlRoot.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        htmlRoot.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
+    }
+
     const copyButtons = [
       document.getElementById('copy-discord-main'),
       document.getElementById('copy-discord-alt')
@@ -490,6 +717,21 @@
         copyDiscord(button);
       });
     });
+
+    const fadeItems = document.querySelectorAll('.fade-in');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      fadeItems.forEach((item) => observer.observe(item));
+    } else {
+      fadeItems.forEach((item) => item.classList.add('visible'));
+    }
   </script>
 </body>
 </html>
