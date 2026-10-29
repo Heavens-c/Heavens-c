@@ -2,11 +2,11 @@
 
 Hi, I'm Jhoren, a **Bachelor of Science in Information Technology graduate** from **Our Lady of Fatima University (OLFU)**.
 
-My college journey was filled with challenges and hardships. I started my studies in **2014**, but due to personal and financial difficulties, I had to stop in **2018**. After several years away from school and the challenges brought by the pandemic, I returned to college in **2023** with a renewed determination to finish my degree and pursue my dreams.
+My college journey was filled with challenges and hardships. I started my studies in **2014**, but due to personal and financial difficulties, I had to stop in **2018**. After several years away from school and the challenges brought by the pandemic, I returned to college in **2023** with renewed determination to finish my degree and pursue my dreams. Through perseverance and hard work, I finally achieved my goal and **graduated with a Bachelor of Science in Information Technology on July 17, 2026**.
 
-During this journey, I worked as both a **part-time and full-time script developer**, specializing in **backend development** and **FiveM server modifications**. FiveM is a multiplayer modification framework that allows developers to create and customize dedicated game servers, providing limitless opportunities for innovation and creativity.
+Throughout this journey, I worked as both a **part-time and full-time script developer**, specializing in **backend development** and **FiveM server modifications**. FiveM is a multiplayer modification framework that allows developers to create and customize dedicated game servers, providing opportunities for innovation, problem-solving, and creativity. Balancing my studies with professional development work helped me gain practical technical experience while continuing to pursue my education.
 
-I am currently working **part-time as an AI-Assisted Developer for Project REV IV**, where I contribute to backend systems, scripting, automation, and the development of gameplay features using AI-assisted tools and modern development practices.
+I am currently working **part-time as an AI-Assisted Developer for Project REV IV and contributing to Sitio Maharlika's RedM and FiveM projects**. My work involves backend systems, scripting, automation, gameplay feature development, and server modifications using AI-assisted tools and modern development practices. Through these projects, I continue to develop my skills in game server development, system integration, and problem-solving while contributing to customized multiplayer experiences across both RedM and FiveM platforms.
 
 Throughout the years, I have contributed to several roleplay communities and projects, including:
 
